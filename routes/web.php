@@ -5,11 +5,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('index');
 
-Route::get('/index', function () {
-    return view('frontend.index');
-});
+Route::get('/rooms', function () {
+    return view('frontend.rooms');
+})->name('rooms');
+
+Route::get('/about', function () {
+    return view('frontend.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+})->name('contact');
+
+Route::get('/booknow', function () {
+    return view('frontend.booknow');
+})->name('booknow');
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -89,7 +89,8 @@ header .navbar .cta > a {
 header .navbar .cta > a span {
   display: inline-block;
   padding: 10px 20px;
-  border: 2px solid #ccc;
+  border: 2px solid #ccc !important;
+  border-color: #e6e3e3 !important;
 }
 
 header .navbar .dropdown.show > a {
@@ -998,7 +999,6 @@ textarea.form-control {
 .tags li {
   padding: 0;
   margin: 0 4px 4px 0;
-  float: left;
   display: inline-block;
 }
 
@@ -1508,6 +1508,7 @@ textarea.form-control {
   opacity: 0;
   visibility: hidden;
 }
+
 
 #loader {
   position: fixed;
