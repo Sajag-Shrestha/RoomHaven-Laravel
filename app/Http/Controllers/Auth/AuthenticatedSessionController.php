@@ -28,6 +28,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Update the updated_at timestamp
+        $user = $request->user();
+        $user->last_login = now();
+        $user->save();
+
+        if ($request->user()->role === 'Admin') {
+            return redirect()->route('admin.dashboard');
+        }
+
+        if ($request->user()->role === 'Guest') {
+            return redirect()->route('index');
+        }
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

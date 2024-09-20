@@ -18,8 +18,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'role', 
+        'profile_image',
+        'last_login'
     ];
 
     /**
@@ -32,8 +36,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+    protected $casts = [
+        'last_login' => 'datetime'
+    ];
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
      * @return array<string, string>
      */
@@ -43,5 +51,46 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Check if the user has a specific role.
+     *
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
+    /**
+     * Check if the user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if the user is a manager.
+     *
+     * @return bool
+     */
+    public function isManager(): bool
+    {
+        return $this->role === 'manager';
+    }
+
+    /**
+     * Check if the user is a guest.
+     *
+     * @return bool
+     */
+    public function isGuest(): bool
+    {
+        return $this->role === 'guest';
     }
 }

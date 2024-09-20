@@ -75,9 +75,10 @@ header .navbar .cta {
   float: right;
 }
 
-header .navbar .cta > a {
-  margin-top: -12px;
-  position: relative;
+header .navbar .cta {
+  display: flex; /* Use flexbox to align buttons horizontally */
+  align-items: center; /* Vertically align items in the center */
+  margin-left: auto; /* Push CTA to the right */
 }
 
 @media (max-width: 767.98px) {
@@ -86,11 +87,30 @@ header .navbar .cta > a {
   }
 }
 
-header .navbar .cta > a span {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 2px solid #ccc !important;
-  border-color: #e6e3e3 !important;
+header .navbar .cta > a {
+  display: inline-flex; /* Use inline-flex for consistent alignment */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  margin: 0 0.5rem; /* Space between buttons */
+  padding: 10px 20px; /* Consistent padding */
+  border: 2px solid #ccc; /* Border style */
+  border-color: #e6e3e3; /* Border color */
+  font-size: 15px; /* Font size to match other links */
+  font-weight: 400; /* Font weight to match other links */
+  text-transform: uppercase; /* Consistent text transformation */
+  color: #333; /* Text color */
+  background-color: transparent; /* Transparent background */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+header .navbar .cta > a:hover {
+  background-color: #b99365; /* Background on hover */
+  color: #fff; /* Text color on hover */
+}
+
+header .navbar .cta > a:focus {
+  outline: none; /* Remove default outline */
 }
 
 header .navbar .dropdown.show > a {
@@ -148,6 +168,211 @@ header .navbar.navbar-light .nav-link {
 header .navbar.navbar-light .nav-link.active {
   color: #fff;
 }
+
+ /* Adjust the avatar and username alignment in the nav */
+ .navbar-nav .nav-item .profile-pic {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.navbar-nav .nav-item .avatar-img {
+  height: 30px; /* Adjust avatar height */
+  width: 30px; /* Adjust avatar width */
+  object-fit: cover;
+  vertical-align: middle; /* Ensures it aligns with text */
+}
+
+.navbar-nav .nav-item .profile-username {
+  line-height: 1.5; /* Adjust line height to match other links */
+  margin-left: 5px; /* Adjust space between avatar and text */
+}
+
+/* Ensure dropdown aligns properly */
+.dropdown-user {
+  width: 100%;
+}
+
+.dropdown-user .user-box {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Adjust other nav links for consistency */
+.navbar-nav .nav-link {
+  padding-top: 8px; /* Adjust based on your navbar height */
+  padding-bottom: 8px; /* Adjust based on your navbar height */
+}
+
+/*     User Dropdown    */
+.dropdown-user {
+  width: 260px; }
+
+.user-box {
+  display: flex;
+  padding: .25rem 1rem; }
+  .user-box .u-text {
+    padding: 0 10px; }
+    .user-box .u-text h4 {
+      margin-bottom: 5px;
+      margin-top: 4px;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1; }
+    .user-box .u-text .text-muted {
+      font-size: 12px;
+      margin-bottom: 5px; }
+    .user-box .u-text .btn {
+      font-size: 11px; }
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .255em;
+  vertical-align: .255em;
+  content: "";
+  border-top: .3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent; }
+
+
+/*    Avatar    */
+.avatar {
+  position: relative;
+  display: inline-block; }
+
+.avatar-img-lg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.avatar-title {
+  width: 100%;
+  height: 100%;
+  background-color: #6861CE;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.avatar-online::before, .avatar-offline::before, .avatar-away::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  content: '';
+  border: 2px solid #fff; }
+
+.avatar-online::before {
+  background-color: #31CE36; }
+
+.avatar-offline::before {
+  background-color: #97a2b1; }
+
+.avatar-away::before {
+  background-color: #FFAD46; }
+
+.avatar {
+  width: 3.2rem;
+  height: 3.2rem; }
+  .avatar .border {
+    border-width: 3px !important; }
+  .avatar .rounded {
+    border-radius: 6px !important; }
+  .avatar .avatar-title {
+    font-size: 18px; }
+
+.avatar-xs {
+  width: 1.95rem;
+  height: 1.95rem; }
+  .avatar-xs .border {
+    border-width: 2px !important; }
+  .avatar-xs .rounded {
+    border-radius: 4px !important; }
+  .avatar-xs .avatar-title {
+    font-size: 12px; }
+  .avatar-xs.avatar-online::before, .avatar-xs.avatar-offline::before, .avatar-xs.avatar-away::before {
+    border-width: 1px; }
+
+
+  .avatar-sm .border {
+    border-width: 3px !important; }
+  .avatar-sm .rounded {
+    border-radius: 4px !important; }
+  .avatar-sm .avatar-title {
+    font-size: 15px; }
+  .avatar-sm.avatar-online::before, .avatar-sm.avatar-offline::before, .avatar-sm.avatar-away::before {
+    border-width: 2px; }
+
+ 
+  .avatar-lg .border {
+    border-width: 3px !important; }
+  .avatar-lg .rounded {
+    border-radius: 8px !important; }
+  .avatar-lg .avatar-title {
+    font-size: 24px; }
+  .avatar-lg.avatar-online::before, .avatar-lg.avatar-offline::before, .avatar-lg.avatar-away::before {
+    border-width: 3px; }
+
+.avatar-xl {
+  width: 5.2rem;
+  height: 5.2rem; }
+  .avatar-xl .border {
+    border-width: 4px !important; }
+  .avatar-xl .rounded {
+    border-radius: 8px !important; }
+  .avatar-xl .avatar-title {
+    font-size: 28px; }
+  .avatar-xl.avatar-online::before, .avatar-xl.avatar-offline::before, .avatar-xl.avatar-away::before {
+    border-width: 4px; }
+
+.avatar-xxl {
+  width: 5.325rem;
+  height: 5.325rem; }
+  .avatar-xxl .border {
+    border-width: 6px !important; }
+  .avatar-xxl .rounded {
+    border-radius: 8px !important; }
+  .avatar-xxl .avatar-title {
+    font-size: 30px; }
+  .avatar-xxl.avatar-online::before, .avatar-xxl.avatar-offline::before, .avatar-xxl.avatar-away::before {
+    border-width: 4px; }
+
+@media (min-width: 768px) {
+  .avatar-xxl {
+    width: 8rem;
+    height: 8rem; }
+    .avatar-xxl .border {
+      border-width: 4px !important; }
+    .avatar-xxl .rounded {
+      border-radius: 12px !important; }
+    .avatar-xxl .avatar-title {
+      font-size: 42px; }
+    .avatar-xxl.avatar-online::before, .avatar-xxl.avatar-offline::before, .avatar-xxl.avatar-away::before {
+      border-width: 4px; } }
+.avatar-group {
+  display: inline-flex; }
+  .avatar-group .avatar + .avatar {
+    margin-left: -.75rem; }
+  .avatar-group .avatar-xs + .avatar-xs {
+    margin-left: -.40625rem; }
+  .avatar-group .avatar-sm + .avatar-sm {
+    margin-left: -.625rem; }
+  .avatar-group .avatar-lg + .avatar-lg {
+    margin-left: -1rem; }
+  .avatar-group .avatar-xl + .avatar-xl {
+    margin-left: -1.28125rem; }
+  .avatar-group .avatar:hover {
+    z-index: 1; }
+
+.border-dark {
+  border-color: #202940 !important; }
+
 
 .site-hero {
   background-size: cover;
