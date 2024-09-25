@@ -1,10 +1,6 @@
 @extends('frontend.includes.main')
 @section('content')
 
-<!doctype html>
-<html lang="en">
-
-  <body>
     <section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url({{asset('frontend-assets/images/big_image_1.jpg')}});">
       <div class="container">
         <div class="row align-items-center site-hero-inner justify-content-center">
@@ -60,10 +56,10 @@
         <div class="row ">
           <div class="col-md-4">
             <div class="post-entry">
-              <img src="{{asset('frontend-assets/images/person_1.jpg')}}" alt="Image placeholder" class="img-fluid">
+              <img src="{{asset('frontend-assets/images/profile.jpg')}}" alt="Image placeholder" class="img-fluid">
               <div class="body-text">
                 <div class="category">Staff</div>
-                <h3 class="mb-3"><a href="#">Michelle Aguilar</a></h3>
+                <h3 class="mb-3"><a href="#">Kamana Tiwari</a></h3>
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum deserunt illo quis similique dolore voluptatem culpa voluptas rerum, dolor totam.</p>
                 <p><a href="#" class="btn btn-primary btn-outline-primary btn-sm">Read Bio</a></p>
               </div>
@@ -71,10 +67,10 @@
           </div>
           <div class="col-md-4">
             <div class="post-entry">
-              <img src="{{asset('frontend-assets/images/person_2.jpg')}}" alt="Image placeholder" class="img-fluid">
+              <img src="{{asset('frontend-assets/images/profile.jpg')}}" alt="Image placeholder" class="img-fluid">
               <div class="body-text">
                 <div class="category">Staff</div>
-                <h3 class="mb-3"><a href="#">Chris Standworth</a></h3>
+                <h3 class="mb-3"><a href="#">Sajag Shrestha</a></h3>
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum deserunt illo quis similique dolore voluptatem culpa voluptas rerum, dolor totam.</p>
                 <p><a href="#" class="btn btn-primary btn-outline-primary btn-sm">Read Bio</a></p>
               </div>
@@ -82,10 +78,10 @@
           </div>
           <div class="col-md-4">
             <div class="post-entry">
-              <img src="{{asset('frontend-assets/images/person_3.jpg')}}" alt="Image placeholder" class="img-fluid">
+              <img src="{{asset('frontend-assets/images/profile.jpg')}}" alt="Image placeholder" class="img-fluid">
               <div class="body-text">
                 <div class="category">Cook</div>
-                <h3 class="mb-3"><a href="#">Rob McDonald</a></h3>
+                <h3 class="mb-3"><a href="#">Bikash Parajuli</a></h3>
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum deserunt illo quis similique dolore voluptatem culpa voluptas rerum, dolor totam.</p>
                 <p><a href="#" class="btn btn-primary btn-outline-primary btn-sm">Read Bio</a></p>
               </div>
@@ -97,6 +93,3 @@
     <!-- END section -->
 
     @endsection
-
-  </body>
-</html>

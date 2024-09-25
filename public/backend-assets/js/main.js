@@ -325,6 +325,62 @@ $(document).ready(function(){
 		$(this).parent().removeClass("active");
 	})
 
+	// Multi Filter Table
+
+	$("#multi-filter-select").DataTable({
+        pageLength: 5,
+        initComplete: function () {
+            this.api()
+                .columns()
+                .every(function () {
+                    var column = this;
+                    var headerCell = $(column.header()).text().trim();
+
+                    // Skip the filter creation for "Action" and "Image" columns
+                    if (headerCell !== "Action" && headerCell !== "Image" && headerCell !== "Status") {
+                        var select = $('<select class="form-select"><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on("change", function () {
+                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                column.search(val ? "^" + val + "$" : "", true, false).draw();
+                            });
+
+                        column
+                            .data()
+                            .unique()
+                            .sort()
+                            .each(function (d, j) {
+                                select.append('<option value="' + d + '">' + d + "</option>");
+                            });
+                    }
+                });
+        },
+    });
+
+	// Fancy Box 
+
+	$('[data-fancybox="gallery"]').fancybox({
+		buttons: [
+		  'zoom',
+		  'slideShow',
+		  'thumbs',
+		  'close'
+		],
+		protect: true, // Prevent right-click and other interactions
+		animationEffect: "zoom",
+		transitionEffect: "circular",
+		loop: true,
+		thumbs: {
+		  axis: 'x' // Horizontal thumbnail gallery
+	  },
+		afterClose: function (instance, slide) {
+		  // Scroll back to the original position after closing Fancybox
+		  $('html, body').animate({
+			scrollTop: $(instance.current.opts.$orig).offset().top
+		  }, 500);
+		}
+	  });
+
 });
 
 // Input File Image
@@ -404,39 +460,5 @@ $('.form-floating-label .form-control').keyup(function(){
 	}
 })
 
-// Multi Filter Table
 
-$(document).ready(function () {
-	$("#multi-filter-select").DataTable({
-	  pageLength: 5,
-	  initComplete: function () {
-		this.api()
-		  .columns()
-		  .every(function () {
-			var column = this;
-			var select = $(
-			  '<select class="form-select"><option value=""></option></select>'
-			)
-			  .appendTo($(column.footer()).empty())
-			  .on("change", function () {
-				var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-				column
-				  .search(val ? "^" + val + "$" : "", true, false)
-				  .draw();
-			  });
-
-			column
-			  .data()
-			  .unique()
-			  .sort()
-			  .each(function (d, j) {
-				select.append(
-				  '<option value="' + d + '">' + d + "</option>"
-				);
-			  });
-		  });
-	  },
-	});
-  });
 

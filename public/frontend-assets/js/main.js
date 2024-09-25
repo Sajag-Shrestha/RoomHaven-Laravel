@@ -159,5 +159,6 @@
     } , { offset: '95%' } );
   };
   contentWayPoint();
+  
 
 })(jQuery);

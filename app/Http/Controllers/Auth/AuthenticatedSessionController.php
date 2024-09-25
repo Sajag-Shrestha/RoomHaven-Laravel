@@ -33,15 +33,14 @@ class AuthenticatedSessionController extends Controller
         $user->last_login = now();
         $user->save();
 
-        if ($request->user()->role === 'Admin') {
+        if ($request->user()->role === 'Admin' || $request->user()->role === 'Manager') {
             return redirect()->route('admin.dashboard');
         }
 
         if ($request->user()->role === 'Guest') {
             return redirect()->route('index');
         }
-
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->route('admin.dashboard');
     }
 
     /**

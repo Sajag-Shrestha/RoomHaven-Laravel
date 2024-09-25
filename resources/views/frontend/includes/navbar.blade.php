@@ -1,10 +1,10 @@
-<body>
-   <header role="banner">
+<header role="banner">
     {{-- Navbar Start --}}
     <nav class="navbar navbar-expand-md navbar-dark bg-light">
         <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}">RoomHaven</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
+                aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -14,7 +14,9 @@
                         <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ route('index') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ Request::is('rooms') ? 'active' : '' }}" href="{{ route('rooms') }}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rooms</a>
+                        <a class="nav-link dropdown-toggle {{ Request::is('rooms') ? 'active' : '' }}"
+                            href="{{ route('rooms') }}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Rooms</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             <a class="dropdown-item" href="{{ route('rooms') }}">Room Videos</a>
                             <a class="dropdown-item" href="{{ route('rooms') }}">Presidential Room</a>
@@ -23,10 +25,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                        <a class="nav-link {{ Request::is('about') ? 'active' : '' }}"
+                            href="{{ route('about') }}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
+                        <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}"
+                            href="{{ route('contact') }}">Contact</a>
                     </li>
 
                     @guest
@@ -40,7 +44,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle profile-pic" href="#" data-bs-toggle="dropdown">
                                 <div class="avatar-sm">
-                                    <img src="{{ asset(Auth::user()->profile_image) }}" alt="Profile" class="avatar-img rounded-circle">
+                                    <img src="{{ asset(Auth::user()->profile_image) }}" alt="Profile"
+                                        class="avatar-img rounded-circle">
                                 </div>
                                 <span class="profile-username">
                                     <span class="op-7">Hi,</span>
@@ -52,7 +57,8 @@
                                     <li>
                                         <div class="user-box">
                                             <div class="avatar-lg">
-                                                <img src="{{ asset(Auth::user()->profile_image) }}" alt="Profile" class="avatar-img-lg rounded">
+                                                <img src="{{ asset(Auth::user()->profile_image) }}" alt="Profile"
+                                                    class="avatar-img-lg rounded">
                                             </div>
                                             <div class="u-text">
                                                 <h4>{{ Auth::user()->name }}</h4>
@@ -65,8 +71,10 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">My Profile</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
                                             @csrf
                                         </form>
                                     </li>
@@ -80,5 +88,3 @@
     </nav>
     {{-- Navbar End  --}}
 </header>
-
-</body>

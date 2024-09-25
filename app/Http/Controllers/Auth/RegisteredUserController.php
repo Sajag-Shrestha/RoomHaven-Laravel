@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
         // Validate registration data
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'in:Guest,Manager,Admin'], // Validate role input
@@ -70,6 +70,6 @@ class RegisteredUserController extends Controller
         }
 
         // Default redirect (for Manager or any other role)
-        return redirect()->route('dashboard');
+        return redirect()->route('admin.dashboard');
     }
 }

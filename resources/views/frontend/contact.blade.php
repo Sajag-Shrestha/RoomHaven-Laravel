@@ -1,10 +1,6 @@
 @extends('frontend.includes.main')
 @section('content')
 
-<!doctype html>
-<html lang="en">
-
-  <body>
     <section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url({{asset('frontend-assets/images/big_image_1.jpg')}});">
       <div class="container">
         <div class="row align-items-center site-hero-inner justify-content-center">
@@ -53,7 +49,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-6 form-group">
-                      <input type="submit" value="Send Message" class="btn btn-primary">
+                      <input type="reset" value="Send Message" class="btn btn-primary">
                     </div>
                   </div>
                 </form>
@@ -71,6 +67,3 @@
     <!-- END section -->
 
     @endsection
-
-  </body>
-</html>

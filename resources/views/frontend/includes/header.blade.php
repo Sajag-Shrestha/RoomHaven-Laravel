@@ -1,5 +1,4 @@
-<head>
-  <title>LuxuryHotel a Hotel Template</title>
+  <title>RoomHeaven - Your ultimate destination for luxury and comfort</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,6 +17,3 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ asset('frontend-assets/images/logo.png') }}">
-  <link rel="icon" type="image/x-icon" href="{{ asset('frontend-assets/images/favicon.ico') }}">
-
-</head>

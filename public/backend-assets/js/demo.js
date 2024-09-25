@@ -17,19 +17,6 @@ Circles.create({
 	styleText:    true
 })
 
-//Notify
-$.notify({
-	icon: 'icon-bell',
-	title: 'Welcome',
-	message: 'You have successfully logged in!',
-},{
-	type: 'secondary',
-	placement: {
-		from: "bottom",
-		align: "right"
-	},
-	time: 1000,
-});
 
 // Jsvectormap
 var world_map = new jsVectorMap({
@@ -264,3 +251,5 @@ $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
 	lineColor: "#177dff",
 	fillColor: "rgba(23, 125, 255, 0.14)",
   });
+
+

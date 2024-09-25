@@ -7,18 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
 
-class Hotel extends Model
+class Room extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 
-        'description', 
-        'rating', 
-        'capacity', 
-        'room_size', 
-        'price'
+        'name',
+        'description',
+        'rating',
+        'capacity',
+        'room_size',
+        'price',
+        'image_id',
+        'status' // New field for room status
     ];
+
+    // Define possible status values
+    const STATUS_AVAILABLE = 'available';
+    const STATUS_BOOKED = 'booked';
+    const STATUS_MAINTENANCE = 'maintenance';
 
     public static function validate($data)
     {
@@ -29,10 +36,22 @@ class Hotel extends Model
             'capacity' => 'nullable|integer',
             'room_size' => 'nullable|numeric',
             'price' => 'required|numeric|min:0',
+            'image_id' => 'required|exists:media,id', // Ensure the selected image exists in media table
+            'status' => 'required|string|in:' . implode(',', [self::STATUS_AVAILABLE, self::STATUS_BOOKED, self::STATUS_MAINTENANCE]) // Ensure valid status
         ]);
 
         if ($validator->fails()) {
             throw new ValidationException($validator);
         }
+    }
+
+    public function media()
+    {
+        return $this->belongsTo(Media::class, 'image_id');
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

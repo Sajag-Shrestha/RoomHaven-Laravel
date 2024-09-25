@@ -16,14 +16,13 @@ class CheckRole
      * @param  string  $role
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        // Check if user is logged in and has the required role
-        if (Auth::user()->role === $role) {
-            return $next($request);
+        if (!Auth::check() || !in_array(Auth::user()->role, $roles)) {
+            
+            return redirect('/'); 
         }
 
-        // If user doesn't have the required role, redirect or return an error response
-        return redirect()->route('index')->with('error', 'You do not have access to this page.'); 
+        return $next($request);
     }
 }
