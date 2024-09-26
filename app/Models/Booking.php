@@ -13,6 +13,18 @@ class Booking extends Model
         'room_id', 'user_id', 'check_in_date', 'check_out_date', 'guests_count', 'total_price', 'status'
     ];
 
+
+    #statuses
+    const PENDING = 'pending';
+    const CONFIRMED = 'confirmed';
+    const CANCELLED = 'cancelled';
+
+    const STATUSES = [
+        self::PENDING => self::PENDING,
+        self::CONFIRMED => self::CONFIRMED,
+        self::CANCELLED => self::CANCELLED,
+    ];
+
     // Define relationships
     public function room()
     {

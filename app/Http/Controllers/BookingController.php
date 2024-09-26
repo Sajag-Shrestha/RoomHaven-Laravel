@@ -15,8 +15,8 @@ class BookingController extends Controller
     public function create()
     {
         // Fetch rooms and users for the form
-        $rooms = Room::all();
-        $users = User::all();
+        $rooms = Room::orderBy('name')->get();
+        $users = User::orderBy('name')->get();
 
         return view('backend.booking.create', compact('rooms', 'users'));
     }
@@ -51,7 +51,9 @@ class BookingController extends Controller
         // Check room status
         if ($room->status === 'booked') {
             return back()->withErrors(['room_id' => 'The room is already booked.'])->withInput();
-        } elseif ($room->status === 'maintenance') {
+        } 
+        
+        if ($room->status === 'maintenance') {
             // Create the booking with pending status
             $booking = Booking::create([
                 'room_id' => $request->room_id,
@@ -60,7 +62,7 @@ class BookingController extends Controller
                 'check_out_date' => $request->check_out_date,
                 'guests_count' => $request->guests_count,
                 'total_price' => $totalPrice,
-                'status' => 'pending', // Set status to pending due to maintenance
+                'status' => Booking::PENDING, // Set status to pending due to maintenance
             ]);
 
             return redirect()->route('booking.index')->with('warning', 'Your booking is currently pending as the room is under maintenance. We will notify you once it is available.');
@@ -76,7 +78,7 @@ class BookingController extends Controller
             'check_out_date' => $request->check_out_date,
             'guests_count' => $request->guests_count,
             'total_price' => $totalPrice,
-            'status' => 'confirmed', // Confirmed if the room is available
+            'status' =>  Booking::CONFIRMED, // Confirmed if the room is available
         ]);
 
         // Update room status to booked
@@ -96,7 +98,7 @@ class BookingController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:pending,confirmed,cancelled',
+            'status' => 'required|in:'.implode(',',Booking::STATUSES),
         ]);
 
         $booking = Booking::findOrFail($id);
@@ -107,7 +109,7 @@ class BookingController extends Controller
         $booking->save();
 
         // Update room status based on booking status
-        if ($request->status === 'confirmed') {
+        if ($request->status === Booking::CONFIRMED) {
             if ($room->status === 'available') {
                 $room->status = 'booked';
                 $room->save();
@@ -115,7 +117,7 @@ class BookingController extends Controller
             } else {
                 return redirect()->route('booking.index')->with(['room_id' => 'Cannot confirm booking as the room is not available.']);
             }
-        } elseif ($request->status === 'cancelled') {
+        } elseif ($request->status === Booking::CANCELLED) {
             $room->status = 'available'; // Assuming available is a valid status
             $room->save();
         }
@@ -196,14 +198,12 @@ class BookingController extends Controller
             'check_out_date' => $request->check_out_date,
             'guests_count' => $request->guests_count,
             'total_price' => $totalPrice, // Add this line
-            'status' => 'confirmed',
-            'created_at' => now(),
-            'updated_at' => now(),
+            'status' => Booking::CONFIRMED,
         ]);
 
         // Update room status to booked after the booking is created
         $room->status = 'booked';
         $room->save();
-        return redirect()->route('bookingCreate', ['room_id' => $request->room_id])->with('success', 'Booking done successfully.');
+        return redirect()->route('bookingCreate', ['room_id' => $request->room_id])->with('success', 'Booking Successfully!');
     }
 }
